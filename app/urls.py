@@ -17,31 +17,31 @@ def get_success_result(result):
     return dict(StatusCode=200, ErrorCode='',Result=result)
 
 
-@router.get("/addrs")
+@router.get("/api/v1/addrs")
 async def addrs_findall(request: Request):
     result = get_addrs(db.session)
     return get_success_result(result)
 
 
-@router.get("/addrs/find/{id}")
+@router.get("/api/v1//addrs/find/{id}")
 async def addrs_findone(id: int):
     result = get_addr_by_id(db.session, id)
     return get_success_result(result)
 
 
-@router.post("/addrs/create")
+@router.post("/api/v1/addrs/create")
 async def addrs_create(addr: AddrCreateEntity):
     result = create_addr_query(db.session, addr)
     return get_success_result(result)
 
 
-@router.post("/addrs/update")
+@router.post("/api/v1/addrs/update")
 async def addrs_update(addr: AddrUpdateEntity):
     result = update_addr_query(db.session, addr)
     return get_success_result(result)
 
 
-@router.post("/addrs/delete")
+@router.post("/api/v1/addrs/delete")
 async def addrs_delete(addr: AddrDeleteEntity):
     result = delete_addr_query(db.session, addr)
     return get_success_result("delete success")
